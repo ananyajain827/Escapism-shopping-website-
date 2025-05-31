@@ -2,9 +2,15 @@
 
 Welcome to **Escapism** — a sleek, responsive shopping website inspired by **Myntra**! This project is a modern front-end design built using **HTML**, **CSS**, and **JavaScript**, showcasing interactive carousels, festive ethnic wear sections, and bold branding — perfect for fashion lovers! 💃🕺
 
-## 🌐 Live Preview (optional)
-Add your deployed link here once hosted on GitHub Pages, Netlify, or Vercel  
-`https://yourusername.github.io/escapism-shopping-website`
+## 🌐 images
+![Screenshot 2025-05-31 182105](https://github.com/user-attachments/assets/a44cc707-6a84-4c20-a0f3-2b9b66fcd933)
+![Screenshot 2025-05-31 182120](https://github.com/user-attachments/assets/e38dab7b-72e1-4037-948f-c266a141d941)
+![Screenshot 2025-05-31 182132](https://github.com/user-attachments/assets/a7d28208-f019-400b-aa40-41453782ed86)
+![Screenshot 2025-05-31 182145](https://github.com/user-attachments/assets/d0da1880-d45e-4c43-82e6-a7365714c7fa)
+![Screenshot 2025-05-31 182157](https://github.com/user-attachments/assets/8307de1e-5e58-4a3d-aeca-fb1b1877a864)
+![Screenshot 2025-05-31 182235](https://github.com/user-attachments/assets/68876a37-7d21-4a2a-8445-1848bb8db655)
+
+
 
 ---
 
