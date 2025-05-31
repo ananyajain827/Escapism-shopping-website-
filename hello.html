@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Carousel with Buy Now</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            display: flex;
+            align-items: center;
+            width: 80%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin-right: 10px;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            flex-shrink: 0;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover .overlay {
+            opacity: 1;
+        }
+
+        .buy-now-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .buy-now-btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .prev-btn, .next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .prev-btn {
+            left: -50px;
+        }
+
+        .next-btn {
+            right: -50px;
+        }
+
+        .prev-btn:hover, .next-btn:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <button class="prev-btn">&lt;</button>
+        <div class="carousel">
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Image 1">
+                <div class="card-content">
+                    <h3 class="card-title">Product 1</h3>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Image 2">
+                <div class="card-content">
+                    <h3 class="card-title">Product 2</h3>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Image 3">
+                <div class="card-content">
+                    <h3 class="card-title">Product 3</h3>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Image 4">
+                <div class="card-content">
+                    <h3 class="card-title">Product 4</h3>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Image 5">
+                <div class="card-content">
+                    <h3 class="card-title">Product 5</h3>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Image 6">
+                <div class="card-content">
+                    <h3 class="card-title">Product 6</h3>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Image 7">
+                <div class="card-content">
+                    <h3 class="card-title">Product 7</h3>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Image 8">
+                <div class="card-content">
+                    <h3 class="card-title">Product 8</h3>
+                    <button class="buy-now-btn">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <button class="next-btn">&gt;</button>
+    </div>
+
+    <script>
+        const carousel = document.querySelector('.carousel');
+        const nextBtn = document.querySelector('.next-btn');
+        const prevBtn = document.querySelector('.prev-btn');
+
+        let scrollAmount = 0;
+
+        nextBtn.addEventListener('click', () => {
+            const cardWidth = document.querySelector('.card').offsetWidth;
+            const visibleCards = Math.floor(carousel.offsetWidth / cardWidth);
+            const totalCards = carousel.children.length;
+            const maxScroll = (totalCards - visibleCards) * cardWidth;
+
+            if (scrollAmount < maxScroll) {
+                scrollAmount += cardWidth;
+                carousel.style.transform = `translateX(-${scrollAmount}px)`;
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            const cardWidth = document.querySelector('.card').offsetWidth;
+
+            if (scrollAmount > 0) {
+                scrollAmount -= cardWidth;
+                carousel.style.transform = `translateX(-${scrollAmount}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

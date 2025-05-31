@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Product Details</h1>
+    </header>
+    <main>
+        <div class="product-details-container" id="productDetails">
+            <!-- JavaScript will populate product details -->
+        </div>
+        <button class="proceed-btn" onclick="proceedToCheckout()">Proceed</button>
+    </main>
+
+    <script>
+        // Function to populate product details from the query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const product = JSON.parse(urlParams.get('product'));
+
+        const productDetails = document.getElementById("productDetails");
+        productDetails.innerHTML = `
+            <h2>${product.name}</h2>
+            <img src="${product.image}" alt="${product.name}" style="width: 100%; max-width: 400px;">
+            <p><strong>Price:</strong> ₹${product.price}</p>
+            <p><strong>Sizes:</strong> ${product.sizes.join(", ")}</p>
+            <p><strong>Colors:</strong> ${product.colors.join(", ")}</p>
+        `;
+
+        // Proceed button handler
+        function proceedToCheckout() {
+            alert('Proceeding to checkout!');
+        }
+    </script>
+</body>
+</html>
